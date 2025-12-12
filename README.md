@@ -30,5 +30,7 @@ uvicorn app.main:app --reload
 - DELETE	/org/delete	Delete organization
 - POST	/admin/login	Admin login
 
-7. 
+<img width="1355" height="1001" alt="image" src="https://github.com/user-attachments/assets/b35603b6-2d38-436e-b5f9-5bdf05088ee5" />
+ 
+
 
