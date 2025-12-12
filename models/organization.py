@@ -1,0 +1,10 @@
+from pydantic import BaseModel, EmailStr
+
+class OrgCreate(BaseModel):
+    organization_name: str
+    email: EmailStr
+    password: str
+
+class OrgUpdate(BaseModel):
+    organization_name: str
+    new_organization_name: str | None = None
