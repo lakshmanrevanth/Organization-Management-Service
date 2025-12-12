@@ -22,6 +22,51 @@ Each organization has an isolated MongoDB collection with JWT-based admin authen
 - SECRET_KEY=supersecretkey
 - TOKEN_EXPIRE_MINUTES=60
 
+5.              ┌────────────────────┐
+                │      Client        │
+                │ (Postman / Browser)│
+                └─────────┬──────────┘
+                          │ HTTP Requests
+                          ▼
+                ┌────────────────────┐
+                │     FastAPI App     │
+                │   (main.py)         │
+                └─────────┬──────────┘
+                          │
+        ┌─────────────────┴─────────────────┐
+        │                                   │
+        ▼                                   ▼
+┌────────────────────┐             ┌────────────────────┐
+│  Organization APIs │             │    Admin APIs       │
+│  /org/create       │             │  /admin/login       │
+│  /org/get          │             └─────────┬──────────┘
+│  /org/update       │                       │
+│  /org/delete       │                       │ JWT
+└─────────┬──────────┘                       ▼
+          │                           ┌────────────────────┐
+          │                           │ Authentication Layer│
+          │                           │ (JWT + bcrypt)      │
+          │                           └─────────┬──────────┘
+          │                                     │
+          ▼                                     ▼
+┌────────────────────────────────────────────────────────┐
+│                    Service Layer                        │
+│  organization_service.py | auth_service.py              │
+│  - Business logic                                      │
+│  - Authorization checks                                │
+│  - Tenant isolation                                    │
+└─────────┬───────────────────────────┬──────────────────┘
+          │                           │
+          ▼                           ▼
+┌────────────────────┐       ┌──────────────────────────┐
+│   Master Database  │       │   Tenant Collections     │
+│ (MongoDB)          │       │ (MongoDB)                │
+│                    │       │                          │
+│ - organizations    │       │ - org_revant             │
+│ - admins           │       │ - org_acme_corp          │
+│                    │       │ - org_companyX           │
+└────────────────────┘       └──────────────────────────┘
+
 6. API Endpoints Table
 - Method	Endpoint	Description
 
@@ -36,8 +81,31 @@ Each organization has an isolated MongoDB collection with JWT-based admin authen
 - - DELETE	/org/delete	Delete organization
 <img width="1103" height="885" alt="image" src="https://github.com/user-attachments/assets/cd7264fe-3ebd-48d9-902d-d8bb30f43e87" />
 
- 
+ -- Brief notes explaining the design choices --
 
+1️⃣ Multi-Tenant Architecture
+
+A master database stores organization and admin details, while each organization gets its own MongoDB collection for data isolation.
+
+2️⃣ Separation of Concerns
+
+The project is divided into routes, services, security, and database layers to keep the code clean, modular, and easy to maintain.
+
+3️⃣ Authentication & Authorization
+
+Admins log in using JWT tokens, and all protected actions are authorized by validating the admin and organization from the database.
+
+4️⃣ Dynamic Collection Strategy
+
+When an organization is created or renamed, MongoDB collections are created or migrated dynamically to support multi-tenancy.
+
+5️⃣ Security Choices
+
+Passwords are securely hashed using bcrypt, JWT tokens have expiration, and secrets are stored using environment variables.
+
+6️⃣ Deployment Friendly
+
+The application is cloud-ready, binds to dynamic ports, and can easily switch between local MongoDB and MongoDB Atlas.
 
 
 
