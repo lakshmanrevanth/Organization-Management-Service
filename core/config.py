@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Settings:
-    MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+    MONGODB_URI = os.getenv("MONGODB_URI")
     MASTER_DB = os.getenv("MASTER_DB_NAME", "organization_master")
 
     SECRET_KEY = os.getenv("SECRET_KEY", "change_me")

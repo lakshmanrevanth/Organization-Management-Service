@@ -6,10 +6,11 @@ class OrgCreate(BaseModel):
     password: str
 
 class OrgUpdate(BaseModel):
-    organization_name: str
-    new_organization_name: str | None = None
+    old_organization_name: str
+    new_organization_name: str
     email: EmailStr | None = None
     password: str | None = None
+
 
 class OrgDelete(BaseModel):
     organization_name: str

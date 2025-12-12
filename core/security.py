@@ -29,7 +29,7 @@ def get_current_admin(token=Depends(security)):
             settings.SECRET_KEY,
             algorithms=[settings.ALGORITHM]
         )
-    except jwt.PyJWTError:
+    except jwt.exceptions.PyJWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
     admin = admins.find_one({"_id": ObjectId(payload["admin_id"])})

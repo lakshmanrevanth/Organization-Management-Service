@@ -50,12 +50,3 @@ def get_org(organization_name: str):
     if not org:
         raise HTTPException(status_code=404, detail="Organization not found")
     return org
-
-@router.get("/all")
-def get_all_organizations():
-    orgs = list(organizations.find({}, {"_id": 0}))
-    return {
-        "count": len(orgs),
-        "organizations": orgs
-    }
-
