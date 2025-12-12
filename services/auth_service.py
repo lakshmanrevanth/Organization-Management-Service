@@ -1,5 +1,5 @@
-from app.db.master import admins
-from app.core.security import verify_password, create_token
+from database.master import admins
+from core.security import verify_password, create_token
 
 def login(email: str, password: str):
     admin = admins.find_one({"email": email})

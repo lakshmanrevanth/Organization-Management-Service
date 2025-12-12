@@ -1,8 +1,11 @@
 from fastapi import APIRouter, HTTPException
-from app.models.auth import LoginRequest
-from app.services.auth_service import login
+from models.auth import LoginRequest
+from services.auth_service import login
 
-router = APIRouter(prefix="/admin")
+router = APIRouter(
+    prefix="/admin",
+    tags=["Admin"]
+)
 
 @router.post("/login")
 def admin_login(data: LoginRequest):

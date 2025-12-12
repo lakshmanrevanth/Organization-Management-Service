@@ -1,4 +1,4 @@
-from app.db.mongo import get_master_db
+from database.mongo import get_master_db
 
 db = get_master_db()
 

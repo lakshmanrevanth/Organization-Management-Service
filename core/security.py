@@ -3,8 +3,8 @@ import jwt
 from datetime import datetime, timedelta
 from fastapi import HTTPException, status, Depends
 from fastapi.security import HTTPBearer
-from app.core.config import settings
-from app.db.master import admins
+from core.config import settings
+from database.master import admins
 from bson import ObjectId
 
 security = HTTPBearer()

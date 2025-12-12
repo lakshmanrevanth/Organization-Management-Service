@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routes import organization, auth
+from routes import organization, auth
 
 app = FastAPI(title="Organization Management Service")
 
