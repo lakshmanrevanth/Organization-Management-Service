@@ -24,24 +24,20 @@ uvicorn app.main:app --reload
 
 6. API Endpoints Table
 - Method	Endpoint	Description
-- POST	/org/create	Create organization
-- GET	/org/get	Get organization
-- PUT	/org/update	Update organization
-- DELETE	/org/delete	Delete organization
-- POST	/admin/login	Admin login
+
+- - POST	/org/create	Create organization
 <img width="1171" height="1024" alt="image" src="https://github.com/user-attachments/assets/17dc70f8-4ff4-4c93-af5d-703a066e9b2d" />
-
+- - GET	/org/get	Get organization
 <img width="1169" height="975" alt="image" src="https://github.com/user-attachments/assets/b27ee2cf-51f1-4b99-8873-67e1c5ab60b9" />
-
+- - POST	/admin/login	Admin login
 <img width="1183" height="949" alt="image" src="https://github.com/user-attachments/assets/5dfbbf4c-c6c1-430b-933f-ebd93c888eb1" />
-
+- - PUT	/org/update	Update organization
 <img width="1114" height="927" alt="image" src="https://github.com/user-attachments/assets/0ffe0088-1143-43d8-a153-08c11f055325" />
-
+- - DELETE	/org/delete	Delete organization
 <img width="1103" height="885" alt="image" src="https://github.com/user-attachments/assets/cd7264fe-3ebd-48d9-902d-d8bb30f43e87" />
 
-<img width="1103" height="885" alt="image" src="https://github.com/user-attachments/assets/295c988a-198f-49f2-919b-bbef064b50ba" />
-
  
+
 
 
 
