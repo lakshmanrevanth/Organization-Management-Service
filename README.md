@@ -17,7 +17,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 
 4. Environment Variables
-- MONGODB_URI=mongodb+srv://admin:27yQRuXUUP0lmLQ2@org-cluster.g4bojiu.mongodb.net/?appName=org-cluster
+- MONGODB_URI=
 - MASTER_DB=organization_master
 - SECRET_KEY=supersecretkey
 - TOKEN_EXPIRE_MINUTES=60
@@ -37,6 +37,7 @@ uvicorn app.main:app --reload
 <img width="1103" height="885" alt="image" src="https://github.com/user-attachments/assets/cd7264fe-3ebd-48d9-902d-d8bb30f43e87" />
 
  
+
 
 
 
