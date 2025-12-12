@@ -17,17 +17,18 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 
 4. Environment Variables
-MONGODB_URI=mongodb+srv://admin:27yQRuXUUP0lmLQ2@org-cluster.g4bojiu.mongodb.net/?appName=org-cluster
-MASTER_DB=organization_master
-SECRET_KEY=supersecretkey
-TOKEN_EXPIRE_MINUTES=60
+- MONGODB_URI=mongodb+srv://admin:27yQRuXUUP0lmLQ2@org-cluster.g4bojiu.mongodb.net/?appName=org-cluster
+- MASTER_DB=organization_master
+- SECRET_KEY=supersecretkey
+- TOKEN_EXPIRE_MINUTES=60
 
-5. API Endpoints Table
-Method	Endpoint	Description
-POST	/org/create	Create organization
-GET	/org/get	Get organization
-PUT	/org/update	Update organization
-DELETE	/org/delete	Delete organization
-POST	/admin/login	Admin login
+6. API Endpoints Table
+- Method	Endpoint	Description
+- POST	/org/create	Create organization
+- GET	/org/get	Get organization
+- PUT	/org/update	Update organization
+- DELETE	/org/delete	Delete organization
+- POST	/admin/login	Admin login
 
-6. 
+7. 
+
