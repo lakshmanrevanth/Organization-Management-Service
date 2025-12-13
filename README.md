@@ -23,7 +23,8 @@ Each organization has an isolated MongoDB collection with JWT-based admin authen
 - TOKEN_EXPIRE_MINUTES=60
 
 5. HIGH LEVEL DESIGN :
-   <img width="1024" height="1536" alt="ChatGPT Image Dec 13, 2025, 05_30_16 AM" src="https://github.com/user-attachments/assets/f0f72609-e651-46e6-8489-fe377e7d3084" />
+   <img width="1024" height="1536" alt="ChatGPT Image Dec 13, 2025, 05_40_43 AM" src="https://github.com/user-attachments/assets/e9ae1384-e89b-49b1-9701-ceaccfc1f3ec" />
+
 
 
 7. API Endpoints Table
@@ -65,6 +66,7 @@ Passwords are securely hashed using bcrypt, JWT tokens have expiration, and secr
 6️⃣ Deployment Friendly
 
 The application is cloud-ready, binds to dynamic ports, and can easily switch between local MongoDB and MongoDB Atlas.
+
 
 
 
