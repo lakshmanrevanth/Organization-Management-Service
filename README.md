@@ -22,52 +22,11 @@ Each organization has an isolated MongoDB collection with JWT-based admin authen
 - SECRET_KEY=supersecretkey
 - TOKEN_EXPIRE_MINUTES=60
 
-5.              ┌────────────────────┐
-                │      Client        │
-                │ (Postman / Browser)│
-                └─────────┬──────────┘
-                          │ HTTP Requests
-                          ▼
-                ┌────────────────────┐
-                │     FastAPI App     │
-                │   (main.py)         │
-                └─────────┬──────────┘
-                          │
-        ┌─────────────────┴─────────────────┐
-        │                                   │
-        ▼                                   ▼
-┌────────────────────┐             ┌────────────────────┐
-│  Organization APIs │             │    Admin APIs       │
-│  /org/create       │             │  /admin/login       │
-│  /org/get          │             └─────────┬──────────┘
-│  /org/update       │                       │
-│  /org/delete       │                       │ JWT
-└─────────┬──────────┘                       ▼
-          │                           ┌────────────────────┐
-          │                           │ Authentication Layer│
-          │                           │ (JWT + bcrypt)      │
-          │                           └─────────┬──────────┘
-          │                                     │
-          ▼                                     ▼
-┌────────────────────────────────────────────────────────┐
-│                    Service Layer                        │
-│  organization_service.py | auth_service.py              │
-│  - Business logic                                      │
-│  - Authorization checks                                │
-│  - Tenant isolation                                    │
-└─────────┬───────────────────────────┬──────────────────┘
-          │                           │
-          ▼                           ▼
-┌────────────────────┐       ┌──────────────────────────┐
-│   Master Database  │       │   Tenant Collections     │
-│ (MongoDB)          │       │ (MongoDB)                │
-│                    │       │                          │
-│ - organizations    │       │ - org_revant             │
-│ - admins           │       │ - org_acme_corp          │
-│                    │       │ - org_companyX           │
-└────────────────────┘       └──────────────────────────┘
+5. HIGH LEVEL DESIGN :
+   <img width="1024" height="1536" alt="ChatGPT Image Dec 13, 2025, 05_30_16 AM" src="https://github.com/user-attachments/assets/f0f72609-e651-46e6-8489-fe377e7d3084" />
 
-6. API Endpoints Table
+
+7. API Endpoints Table
 - Method	Endpoint	Description
 
 - - POST	/org/create	Create organization
@@ -106,6 +65,7 @@ Passwords are securely hashed using bcrypt, JWT tokens have expiration, and secr
 6️⃣ Deployment Friendly
 
 The application is cloud-ready, binds to dynamic ports, and can easily switch between local MongoDB and MongoDB Atlas.
+
 
 
 
